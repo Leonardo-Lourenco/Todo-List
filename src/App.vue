@@ -1,26 +1,95 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+
+  <div id="app">
+
+    <div class="container grid-xs py-2">
+
+      <img class="img-responsive" src="@/assets/task.png" alt="CoffeeTagTodo">
+
+      <form @submit.prevent="addTarefa(tarefa)">
+
+         
+          <div class="input-group">
+
+            <input type="text" v-model="tarefa.description" class="form-input"  placeholder=" Adicionar uma Tarefa">
+            <button class="btn btn-success input-group-btn "><i class="icon icon-arrow-right"></i> Adicionar </button>
+
+          </div>
+
+
+          <ul class="step">
+              <li class="step-item active">
+                <a href="#" class="tooltip" data-tooltip="Step 1">Step 1</a>
+                          </li>
+              <li class="step-item">
+                <a href="#" class="tooltip" data-tooltip="Step 2">Step 2</a>
+                          </li>
+              <li class="step-item">
+                <a href="#" class="tooltip" data-tooltip="Step 3">Step 3</a>
+              </li>
+              <li class="step-item">
+                <a href="#" class="tooltip" data-tooltip="Step 4">Step 4</a>
+              </li>
+            </ul>
+
+            {{ tarefas }}
+
+      </form>
+
+
+
+    </div>
+
+
+
+  </div>
+
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  export default {
+
+
+    name: 'App',
+
+    data() {
+
+      return { tarefas: [], tarefa:  { checked: false} };
+
+
+    },
+
+    methods: {
+
+      addTarefa(tarefa) {
+        
+        tarefa.id = Date.now();
+        this.tarefas.push(tarefa);
+
+
+      }
+    }
+
+
+  
 }
+
+
+
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
+    img {
+
+      max-width: 150px;
+      margin: 0 auto;
+
+    }
+
+
+
 </style>
